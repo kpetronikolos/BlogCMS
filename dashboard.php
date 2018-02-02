@@ -60,9 +60,7 @@
 				<h4>About</h4>
 				<p>Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus. Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus.</p>
 				<h4>About</h4>
-				<p>Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus. Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus.</p>
-				<h4>About</h4>
-				<p>Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus. Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus.</p>
+				<p>Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus. Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus.</p>				
 			</div>
 		</div>		
 	</div>
