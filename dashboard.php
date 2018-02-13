@@ -64,5 +64,19 @@
 		</div>	<!-- end of row -->
 	</div>	<!-- end of container-fluid -->
 
+	<div id="Footer">
+		<hr><p>Theme By | Konstantinos Petronikolos |&copy;2017-2018 --- All rights reserved.</p>
+		<a style="color: white; text-decoration: none; cursor: pointer; font-weight: bold;" href="http://google.com/" target="_blank">
+			<p>
+				This site is only used for Study purpose. Kostas has all the rights. No one is allowed to distribute
+				copies other than <br>&trade; google.com &trade;  Kostas ; &trade; Vela
+			</p>
+			<hr>
+		</a>
+		
+	</div> <!-- End of Footer -->
+
+	<div style="height: 10px; background: #27AAE1;"></div>
+
 </body>
 </html>

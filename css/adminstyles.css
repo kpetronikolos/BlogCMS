@@ -22,3 +22,11 @@ body {
 	font-weight: bold;
 	display: block;
 }
+
+#Footer {
+	padding: 10px;
+	border-top: 1px solid black;
+	color: #eeeeee;
+	background-color: #211f22;
+	text-align: center;
+}
