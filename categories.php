@@ -1,4 +1,22 @@
-<?php require_once("include/db.php"); ?>
+<?php 
+	require_once("include/db.php");
+	require_once("include/sessions.php");
+	require_once("include/functions.php");
+?>
+
+<?php
+	if (isset($_POST["Submit"])) {
+		$category = mysql_real_escape_string($_POST["Category"]);
+		
+		if (empty($category)) {
+			$_SESSION["ErrorMessage"] = "All fields must be filled out.";
+			Redirect_to("categories.php");
+		} elseif (strlen($category)>99) {
+			$_SESSION["ErrorMessage"] = "Too long name.";
+			Redirect_to("categories.php");
+		}
+	}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -34,6 +52,7 @@
 
 			<div class="col-sm-10">
 				<h1>Manage Categories</h1>
+				<?php echo Message(); echo SuccessMessage(); ?>
 				<div>
 					<form action="categories.php" method="post">
 						<fieldset>
