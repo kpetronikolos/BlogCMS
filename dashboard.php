@@ -15,11 +15,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-2">
-				<h1>Kostas</h1>
+				<h1></h1>
 
 				<ul id="side-menu" class="nav nav-pills nav-stacked">
 					<li class="active"><a href="dashboard.php"><span class="glyphicon glyphicon-th"></span>&nbsp; Dashboard</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Add New Post</a></li>
+					<li><a href="addNewPost.php"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Add New Post</a></li>
 					<li><a href="categories.php"><span class="glyphicon glyphicon-tags"></span>&nbsp; Categories</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; Manage Admins</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp; Comments</a></li>
