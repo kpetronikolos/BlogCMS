@@ -7,6 +7,13 @@
 <?php
 	if (isset($_POST["Submit"])) {
 		$category = mysql_real_escape_string($_POST["Category"]);
+
+		date_default_timezone_set("Europe/Athens");
+
+		$currentTime=time();
+	
+		$dateTime=strftime("%B-%d-%Y %H:%M:%S", $currentTime);
+		$admin = "Konstantinos Petronikolos";
 		
 		if (empty($category)) {
 			$_SESSION["ErrorMessage"] = "All fields must be filled out.";
@@ -14,6 +21,20 @@
 		} elseif (strlen($category)>99) {
 			$_SESSION["ErrorMessage"] = "Too long name.";
 			Redirect_to("categories.php");
+		} else {
+			global $connectingDB;
+			// var_dump($connectingDB);die();			
+			$query = sprintf("INSERT INTO category(datetime, name, creatorname) VALUES('%s', '%s', '%s')", $dateTime, $category, $admin);
+			// $query = "INSERT INTO category(datetime, name, creatorname) VALUES('$dateTime','$category', '$admin' )";
+			$execute = mysql_query($query);
+
+			if ($execute) {
+				$_SESSION["SuccessMessage"] = "Category added successfully.";
+				Redirect_to("categories.php");
+			} else {
+				$_SESSION["ErrorMessage"] = "Category failed to add.";
+				Redirect_to("categories.php");
+			}
 		}
 	}
 ?>
@@ -66,6 +87,41 @@
 						<br>						
 					</form>
 				</div>	<!-- end of div form -->
+
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<tr>
+							<th>Sr. No</th>
+							<th>Date & Time</th>
+							<th>Category Name</th>
+							<th>Creator Name</th>
+						</tr>
+
+						<?php
+							global $connectingDB;
+							$viewQuery = sprintf("SELECT * from category ORDER BY datetime desc");
+							$execute = mysql_query($viewQuery);
+							$SrNo = 0;
+
+							while ($datarows = mysql_fetch_array($execute)) {
+								$id = $datarows["id"];
+								$date = $datarows["datetime"];
+								$category = $datarows["name"];
+								$creator = $datarows["creatorname"];
+								$SrNo++;							
+						?>
+
+								<tr>
+									<td><?php echo $SrNo; ?></td>
+									<td><?php echo $date; ?></td>
+									<td><?php echo $category; ?></td>
+									<td><?php echo $creator; ?></td>
+								</tr>
+
+						<?php } ?>
+ 
+					</table>
+				</div>	<!-- end of div table -->
 						
 			</div>	<!-- end of col-sm-10 -->
 		</div>	<!-- end of row -->
