@@ -78,7 +78,7 @@
 					<form action="categories.php" method="post">
 						<fieldset>
 							<div class="form-group">
-								<label for="categoryname">Name:</label>
+								<label for="categoryname"><span class="FieldInfo">Name:</span></label>
 								<input class="form-control" type="text" name="Category" id="categoryname" placeholder="Name">
 							</div>
 							<br>
