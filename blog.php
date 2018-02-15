@@ -1,3 +1,9 @@
+<?php 
+	require_once("include/db.php");
+	require_once("include/sessions.php");
+	require_once("include/functions.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +53,69 @@
 		</div>	<!-- end of class container -->
 	</nav>	<!-- end of nav -->
 	<div style="height: 10px; background-color: #27aae1; margin: -20px;"></div>
+
+	<div class="container">
+		<div class="blog-header">
+			<h1>The Complete Responsive CMS Blog</h1>
+			<p class="lead">The complete blog using php.</p>			
+		</div>	<!-- end of class blog-header -->
+		<div class="row">
+			<div class="col-sm-8">
+				<?php
+					global $connectingDB;
+					$query = sprintf("SELECT * from admin_panel ORDER BY datetime desc");
+					$execute = mysql_query($query);
+					while ($datarows = mysql_fetch_array($execute)) {
+						$postId = $datarows["id"];
+						$datetime = $datarows["datetime"];
+						$title = $datarows["title"];
+						$category = $datarows["category"];
+						$admin = $datarows["author"];
+						$image = $datarows["image"];
+						$post = $datarows["post"];
+					
+				?>
+						<div class="blogpost thumbnail">
+							<img class="img-responsive img-rounded" src="img/<?php echo $image; ?>">
+
+							<div class="caption">
+								<h1 id="heading"><?php echo htmlentities($title); ?></h1>
+								<p class="description">Category: <?php echo htmlentities($category); ?> Published on <?php echo htmlentities($datetime); ?></p>
+								<p class="post">
+									<?php
+										if (strlen($post)>150) {
+											$post = substr($post, 0, 150). '...';
+										}
+										echo $post;
+									?>
+										
+								</p>
+							</div>
+							<a href="fullPost.php?id=<?php echo $postId; ?>"><span class="btn btn-info">Read More &rsaquo;&rsaquo;</span></a>
+						</div>
+
+					<?php } ?>
+
+			</div>
+			<div class="col-sm-offset-1 col-sm-3">
+				
+			</div>
+		</div>
+	</div>	<!-- end of class container -->
+
+	<div id="Footer">
+		<hr><p>Theme By | Konstantinos Petronikolos |&copy;2017-2018 --- All rights reserved.</p>
+		<a style="color: white; text-decoration: none; cursor: pointer; font-weight: bold;" href="http://google.com/" target="_blank">
+			<p>
+				This site is only used for Study purpose. Kostas has all the rights. No one is allowed to distribute
+				copies other than <br>&trade; google.com &trade;  Kostas ; &trade; Vela
+			</p>
+			<hr>
+		</a>
+		
+	</div> <!-- End of Footer -->
+
+	<div style="height: 10px; background: #27AAE1;"></div>
 
 </body>
 </html>
