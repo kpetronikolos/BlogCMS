@@ -63,7 +63,15 @@
 			<div class="col-sm-8">
 				<?php
 					global $connectingDB;
-					$query = sprintf("SELECT * from admin_panel ORDER BY datetime desc");
+
+					if (isset($_GET["SearchButton"])) {
+						$search = $_GET["Search"];
+						$query = "SELECT * FROM admin_panel WHERE datetime LIKE '%$search%' OR title LIKE '%$search%'
+						OR category LIKE '%$search%' OR post LIKE '%$search%'";
+					} else {
+						$query = sprintf("SELECT * from admin_panel ORDER BY datetime desc");
+					}
+					
 					$execute = mysql_query($query);
 					while ($datarows = mysql_fetch_array($execute)) {
 						$postId = $datarows["id"];
@@ -92,15 +100,15 @@
 								</p>
 							</div>
 							<a href="fullPost.php?id=<?php echo $postId; ?>"><span class="btn btn-info">Read More &rsaquo;&rsaquo;</span></a>
-						</div>
+						</div>	<!-- end of class thumbanail -->
 
 					<?php } ?>
 
-			</div>
+			</div>	<!-- end of class col-sm-8 -->
 			<div class="col-sm-offset-1 col-sm-3">
 				
 			</div>
-		</div>
+		</div>	<!-- end of class row -->
 	</div>	<!-- end of class container -->
 
 	<div id="Footer">
