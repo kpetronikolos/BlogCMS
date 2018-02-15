@@ -9,7 +9,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Blog</title>
+	<title>Full Post</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -69,7 +69,8 @@
 						$query = "SELECT * FROM admin_panel WHERE datetime LIKE '%$search%' OR title LIKE '%$search%'
 						OR category LIKE '%$search%' OR post LIKE '%$search%'";
 					} else {
-						$query = sprintf("SELECT * from admin_panel ORDER BY datetime desc");
+						$id = $_GET["id"];
+						$query = sprintf("SELECT * from admin_panel WHERE id = '%s'", $id);
 					}
 					
 					$execute = mysql_query($query);
@@ -91,15 +92,12 @@
 								<p class="description">Category: <?php echo htmlentities($category); ?> Published on <?php echo htmlentities($datetime); ?></p>
 								<p class="post">
 									<?php
-										if (strlen($post)>150) {
-											$post = substr($post, 0, 150). '...';
-										}
 										echo $post;
 									?>
 										
 								</p>
 							</div>
-							<a href="fullPost.php?id=<?php echo $postId; ?>" target="_blank"><span class="btn btn-info">Read More &rsaquo;&rsaquo;</span></a>
+							
 						</div>	<!-- end of class thumbanail -->
 
 					<?php } ?>
