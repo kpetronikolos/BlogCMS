@@ -36,8 +36,8 @@
 
 			<div class="collapse navbar-collapse" id="collapse">
 				<ul class="nav navbar-nav">
-		  			<li><a href="dashboard.php">Home</a></li>
-		  			<li class="active"><a href="blog.php">Blog</a></li>
+		  			<li class="active"><a href="dashboard.php">Home</a></li>
+		  			<li><a href="blog.php">Blog</a></li>
 		  			<li><a href="#">About us</a></li>
 		  			<li><a href="#">Services</a></li>
 		  			<li><a href="#">Contact us</a></li>
@@ -75,7 +75,56 @@
 
 			<div class="col-sm-10">				
 				<div><?php echo Message(); echo SuccessMessage(); ?></div>
-				<h1>Admin Dashboard</h1>				
+				<h1>Admin Dashboard</h1>
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<tr>
+							<th>No</th>
+							<th>Post Title</th>
+							<th>Date & Time</th>
+							<th>Author</th>
+							<th>Category</th>
+							<th>Banner</th>
+							<th>Comments</th>
+							<th>Action</th>
+							<th>Details</th>
+						</tr>
+
+						<?php
+							global $connectingDB;
+							$query = sprintf("SELECT * from admin_panel ORDER BY datetime desc");
+							$execute = mysql_query($query);
+							$SrNo = 0;
+							while($datarows = mysql_fetch_array($execute)){
+								$id = $datarows["id"];
+								$dateTime = $datarows["datetime"];
+								$title = $datarows["title"];
+								$category = $datarows["category"];
+								$admin = $datarows["author"];
+								$image = $datarows["image"];
+								$post = $datarows["post"];
+								$SrNo++;
+							
+						?>
+								<tr>
+									<td><?php echo $SrNo; ?></td>
+									<td><?php echo $title; ?></td>
+									<td><?php echo $dateTime; ?></td>
+									<td><?php echo $admin; ?></td>
+									<td><?php echo $category; ?></td>
+									<td><img src="img/<?php echo $image; ?>" width="170px"; height = "50px"></td>
+									<td><?php echo "Processing"; ?></td>
+									<td><?php echo "Edit and Delete"; ?></td>
+									<td><?php echo "Live Preview"; ?></td>
+								</tr>
+
+							<?php }
+							?>
+
+
+					</table>
+					
+				</div>				
 			</div>	<!-- end of col-sm-10 -->
 		</div>	<!-- end of row -->
 	</div>	<!-- end of container-fluid -->
