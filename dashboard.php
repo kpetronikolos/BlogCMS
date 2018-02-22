@@ -114,8 +114,8 @@
 									<td><?php echo $category; ?></td>
 									<td><img src="img/<?php echo $image; ?>" width="170px"; height = "50px"></td>
 									<td><?php echo "Processing"; ?></td>
-									<td><a href="editPost.php?edit=<?php echo $id; ?>"><span class="btn btn-warning">Edit</span></a>
-										<a href="deletePost.php?delete=<?php echo $id; ?>"><span class="btn btn-danger">Delete</span></a></td>
+									<td><a href="editPost.php?edit=<?php echo $id; ?>" target="_blank"><span class="btn btn-warning">Edit</span></a>
+										<a href="deletePost.php?delete=<?php echo $id; ?>" target="_blank"><span class="btn btn-danger">Delete</span></a></td>
 									<td><a href="fullPost.php?id=<?php echo $id; ?>" target="_blank"><span class="btn btn-primary">Live Preview</span></a></td>
 								</tr>
 
