@@ -4,6 +4,45 @@
 	require_once("include/functions.php");
 ?>
 
+<?php
+	if (isset($_POST["Submit"])) {
+		$name = mysql_real_escape_string($_POST["Name"]);
+		$email = mysql_real_escape_string($_POST["Email"]);
+		$comment = mysql_real_escape_string($_POST["Comment"]);
+		$status = "OFF";
+
+		date_default_timezone_set("Europe/Athens");
+		$currentTime=time();	
+		$dateTime=strftime("%B-%d-%Y %H:%M:%S", $currentTime);
+		
+		
+		$postId = $_GET['id'];
+		
+
+		if (empty($name) || empty($email) || empty($comment)){
+			$_SESSION["ErrorMessage"] = "All fieds are required";
+			
+		} elseif (strlen($comment) > 500) {
+			$_SESSION["ErrorMessage"] = "Only 500 characters are required.";
+			
+		} else {
+			global $connectingDB;
+						
+			$query = sprintf("INSERT INTO comments(datetime, name, email, comment, status) VALUES('%s', '%s', '%s', '%s', '%s')", $dateTime, $name, $email, $comment, $status);
+			
+			$execute = mysql_query($query);			
+
+			if ($execute) {
+				$_SESSION["SuccessMessage"] = "Comment added successfully.";
+				Redirect_to("fullPost.php?id={$postId}");
+			} else {
+				$_SESSION["ErrorMessage"] = "Comment failed to add.";
+				Redirect_to("fullPost.php?id={$postId}");
+			}
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +100,7 @@
 		</div>	<!-- end of class blog-header -->
 		<div class="row">
 			<div class="col-sm-8">
+				<?php echo Message(); echo SuccessMessage(); ?>
 				<?php
 					global $connectingDB;
 
