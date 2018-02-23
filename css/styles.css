@@ -45,3 +45,9 @@
 .btn-info {
 	float: right;
 }
+
+.FieldInfo {
+	color: rgb(251, 174, 44);
+	font-family: Bitter, Georgia, Times, "Times New Roman", serif;
+	font-size: 1.2em;
+}

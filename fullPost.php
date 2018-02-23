@@ -102,6 +102,33 @@
 
 					<?php } ?>
 
+					<br><br>
+					<span class="FieldInfo">Share your thoughts about this post</span>
+					<br><br>
+					<div>
+						<form action="fullPost.php?id=<?php echo $postId; ?>" method="post">
+							<fieldset>
+								<div class="form-group">
+									<label for="Name"><span class="FieldInfo">Name:</span></label>
+									<input class="form-control" type="text" name="Name" id="Name" placeholder="Name">
+								</div>
+
+								<div class="form-group">
+									<label for="Email"><span class="FieldInfo">Email:</span></label>
+									<input class="form-control" type="email" name="Email" id="Email" placeholder="Email">
+								</div>
+								
+								<div class="form-group">
+									<label for="commentarea"><span class="FieldInfo">Comment:</span></label>
+									<textarea class="form-control" name="Comment" id="commentarea"></textarea>
+								</div>	
+								<br>
+								<input class="btn btn-primary" type="Submit" name="Submit" value="Submit">
+							</fieldset>
+							<br>						
+						</form>
+					</div>	<!-- end of div form -->
+
 			</div>	<!-- end of class col-sm-8 -->
 			<div class="col-sm-offset-1 col-sm-3">
 				
